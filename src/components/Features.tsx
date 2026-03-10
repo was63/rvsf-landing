@@ -7,6 +7,8 @@ const features = [
     ),
     title: "Vehicle Management",
     description: "Track every vehicle from acquisition to disposal. Record make, model, weight, purchase price, and complete lifecycle data.",
+    gradient: "from-blue-500 to-cyan-500",
+    bgGradient: "from-blue-500/10 to-cyan-500/10",
   },
   {
     icon: (
@@ -16,6 +18,8 @@ const features = [
     ),
     title: "Sales & Billing",
     description: "Generate GST-compliant invoices, manage sales orders, track payments, and handle bulk material sales effortlessly.",
+    gradient: "from-emerald-500 to-green-500",
+    bgGradient: "from-emerald-500/10 to-green-500/10",
   },
   {
     icon: (
@@ -25,6 +29,8 @@ const features = [
     ),
     title: "GST Compliance",
     description: "Auto-calculate GST (CGST, SGST, IGST), generate e-way bills, file GSTR returns, and stay fully compliant with Indian tax laws.",
+    gradient: "from-purple-500 to-violet-500",
+    bgGradient: "from-purple-500/10 to-violet-500/10",
   },
   {
     icon: (
@@ -34,6 +40,8 @@ const features = [
     ),
     title: "Vendor Management",
     description: "Maintain a vendor directory, track purchases, manage payables, and monitor vendor performance and history.",
+    gradient: "from-orange-500 to-amber-500",
+    bgGradient: "from-orange-500/10 to-amber-500/10",
   },
   {
     icon: (
@@ -43,6 +51,8 @@ const features = [
     ),
     title: "Analytics Dashboard",
     description: "Real-time insights on revenue, expenses, profit margins, inventory levels, and business performance at a glance.",
+    gradient: "from-pink-500 to-rose-500",
+    bgGradient: "from-pink-500/10 to-rose-500/10",
   },
   {
     icon: (
@@ -52,36 +62,50 @@ const features = [
     ),
     title: "Multi-User Access",
     description: "Role-based access control for admins, managers, and operators. Each user sees only what they need.",
+    gradient: "from-indigo-500 to-blue-500",
+    bgGradient: "from-indigo-500/10 to-blue-500/10",
   },
 ];
 
 export default function Features() {
   return (
-    <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+    <section id="features" className="py-24 px-4 sm:px-6 lg:px-8 bg-white">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
-        <div className="text-center mb-16">
-          <span className="text-blue-800 text-sm font-semibold uppercase tracking-wider">Features</span>
-          <h2 className="mt-3 text-3xl sm:text-4xl font-bold text-gray-900">
-            Everything You Need to Run Your RVSF
+        <div className="text-center mb-20">
+          <span className="inline-block bg-blue-100 text-blue-800 text-sm font-semibold uppercase tracking-wider px-4 py-1.5 rounded-full">
+            Features
+          </span>
+          <h2 className="mt-5 text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900">
+            Everything You Need to Run Your{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">RVSF</span>
           </h2>
-          <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="mt-5 text-lg text-gray-600 max-w-2xl mx-auto">
             A purpose-built ERP system designed specifically for Registered Vehicle Scrapping Facilities in India.
           </p>
         </div>
 
         {/* Feature grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {features.map((feature) => (
+          {features.map((feature, index) => (
             <div
               key={feature.title}
-              className="bg-gray-50 rounded-2xl p-8 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 border border-gray-100"
+              className="group relative bg-white rounded-2xl p-8 hover:shadow-2xl transition-all duration-500 border border-gray-100 hover:-translate-y-2 overflow-hidden"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
-              <div className="w-12 h-12 bg-blue-100 text-blue-800 rounded-xl flex items-center justify-center mb-5">
-                {feature.icon}
+              {/* Gradient top border */}
+              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${feature.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
+              {/* Background glow on hover */}
+              <div className={`absolute inset-0 bg-gradient-to-br ${feature.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-2xl`} />
+
+              <div className="relative z-10">
+                <div className={`w-14 h-14 bg-gradient-to-br ${feature.gradient} text-white rounded-2xl flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  {feature.icon}
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
               </div>
-              <h3 className="text-xl font-semibold text-gray-900 mb-3">{feature.title}</h3>
-              <p className="text-gray-600 leading-relaxed">{feature.description}</p>
             </div>
           ))}
         </div>
