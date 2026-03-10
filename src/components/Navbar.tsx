@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 
 const APP_URL = "https://app.rvsf-india.com/subscriptions/register/";
+const LOGIN_URL = "https://app.rvsf-india.com/accounts/login/";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -49,6 +50,14 @@ export default function Navbar() {
               </a>
             ))}
             <a
+              href={LOGIN_URL}
+              className={`text-sm font-medium transition-colors ${
+                scrolled ? "text-gray-600 hover:text-blue-700" : "text-white/80 hover:text-white"
+              }`}
+            >
+              Login
+            </a>
+            <a
               href={APP_URL}
               className="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition-all shadow-lg shadow-green-500/25 hover:shadow-green-500/40 hover:scale-105"
             >
@@ -87,6 +96,13 @@ export default function Navbar() {
                 {item}
               </a>
             ))}
+            <a
+              href={LOGIN_URL}
+              onClick={() => setMobileOpen(false)}
+              className="block text-gray-700 hover:text-blue-700 text-sm font-medium py-3 px-4 rounded-xl hover:bg-blue-50 transition-colors"
+            >
+              Login
+            </a>
             <a
               href={APP_URL}
               className="block bg-gradient-to-r from-green-500 to-emerald-600 text-white px-5 py-3 rounded-xl text-sm font-semibold text-center mt-2"
